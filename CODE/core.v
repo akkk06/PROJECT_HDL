@@ -123,6 +123,7 @@ module coree ( input [0:511] message, input clk, input reset, input init_hash, o
 			cnt15_2 <= 7'd2;
 			cnt7_2 <= 7'd10;
 			cnt2_2 <= 7'd15;
+			done <= 1'b0;
 			
          for(i = 0; i < 16; i=i+1) begin
                 w[i] <= message[32*i +: 32];
@@ -187,7 +188,12 @@ module coree ( input [0:511] message, input clk, input reset, input init_hash, o
     end
 
     always @(posedge clk) begin
-        ready <= ready_dash;
+        if (reset || reset_hash) begin
+            ready <= 1'b0;
+        end 
+        else begin
+            ready <= ready_dash;
+        end
     end
 
     wire select;
