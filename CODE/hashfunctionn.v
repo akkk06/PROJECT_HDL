@@ -45,24 +45,24 @@ module hashfunctionn (
 	
 	always @(*) begin
 		if (reset) begin
-			a <= h0;
-			b <= h1;
-			c <= h2;
-			d <= h3;
-			e <= h4;
-			f <= h5;
-			g <= h6;
-			h <= h7;
+			a = h0;
+			b = h1;
+			c = h2;
+			d = h3;
+			e = h4;
+			f = h5;
+			g = h6;
+			h = h7;
 		end
 		else begin
-			a <= a_new;
-			b <= b_new;
-			c <= c_new;
-			d <= d_new;
-			e <= e_new;
-			f <= f_new;
-			g <= g_new;
-			h <= h_new;
+			a = a_new;
+			b = b_new;
+			c = c_new;
+			d = d_new;
+			e = e_new;
+			f = f_new;
+			g = g_new;
+			h = h_new;
 		end
 	end
 	
@@ -97,3 +97,4 @@ endmodule
 	
 	
 	
+
