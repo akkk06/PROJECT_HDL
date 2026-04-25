@@ -137,7 +137,16 @@ module control ( input clk,
                 end
 
                 PAD_LEN: begin
-                    buffer[bytecnt*8 +: 8] <= totalbit[ (7 - (bytecnt - 56))*8 +: 8 ];
+                    case (bytecnt)
+                        6'd56: buffer[448 +: 8] <= totalbit[56 +: 8];
+                        6'd57: buffer[456 +: 8] <= totalbit[48 +: 8];
+                        6'd58: buffer[464 +: 8] <= totalbit[40 +: 8];
+                        6'd59: buffer[472 +: 8] <= totalbit[32 +: 8];
+                        6'd60: buffer[480 +: 8] <= totalbit[24 +: 8];
+                        6'd61: buffer[488 +: 8] <= totalbit[16 +: 8];
+                        6'd62: buffer[496 +: 8] <= totalbit[8  +: 8];
+                        6'd63: buffer[504 +: 8] <= totalbit[0  +: 8];
+                    endcase
                     bytecnt <= bytecnt + 1;
                 end
 
